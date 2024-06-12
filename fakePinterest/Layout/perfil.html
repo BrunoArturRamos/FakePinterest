@@ -1,56 +1,51 @@
-<!DOCTYPE html>
-<html lang="pt">
+{% extends "homepage.html" %}
 
-  <body>
-    <div class="container">
+{% block titulo %}
+Perfil - {{ usuario.username }}
+{% endblock %}
 
-        <div class="bloco-add-img">
-          <h2>alondoido - Enviar foto</h2>
+{% block body %}
+<body>
+{% include "navbar.html" %}
+<div class="container">
 
-          <div class="bloco-arquivo">
+{% if form %}
+
+
+      <form class="bloco-add-img" method="POST" enctype="multipart/form-data">
+          {{ form.csrf_token }}
+        <h2>{{ usuario.username }} - Enviar foto</h2>
+
+        <div class="bloco-arquivo">
             <label for="foto" class="botao-arquivo">
               Escolher arquivo
-              <input
-                class="input-arquivo"
-                id="foto"
-                name="foto"
-                required=""
-                type="file"
-              />
+                {{ form.foto(class="input-arquivo", id="foto") }}
             </label>
             <span id="imagem-arquivo" class=""></span>
           </div>
 
-          <button class="botao-login">Enviar foto</button>
-        </div>
+          {{ form.botao_confirma(class="botao-login") }}
+        </form>
+
+{% else %}
+<div class="bloco-add-img">
+    <h2>{{ usuario.username }} - Ver Perfil</h2>
+</div>
+{% endif %}
+
+
+
+<div class="conteudo">
+{% for foto in usuario.fotos %}
+    <div class="bloco-imagem">
+      <img src="{{ url_for('static', filename='fotos_posts/{}'.format(foto.imagem)) }}" />
+    </div>
+{% endfor %}
     </div>
 
-      <div class="conteudo">
-        <div class="bloco-imagem">
-          <img src="img/pinterest-1.jpg" alt="Pinterest 1" />
-        </div>
-        <div class="bloco-imagem">
-          <img src="img/pinterest-2.jpg" alt="Pinterest 2" />
-        </div>
-        <div class="bloco-imagem">
-          <img src="img/pinterest-3.jpg" alt="Pinterest 3" />
-        </div>
-        <div class="bloco-imagem">
-          <img src="img/pinterest-4.jpg" alt="Pinterest 4" />
-        </div>
-        <div class="bloco-imagem">
-          <img src="img/pinterest-5.jpg" alt="Pinterest 5" />
-        </div>
-        <div class="bloco-imagem">
-          <img src="img/pinterest-6.jpg" alt="Pinterest 6" />
-        </div>
-        <div class="bloco-imagem">
-          <img src="img/pinterest-7.jpg" alt="Pinterest 7" />
-        </div>
-      </div>
-    </div>
+</div>
 
-    <script>
+  <script>
       let input = document.getElementById("foto");
       let imagemArquivo = document.getElementById("imagem-arquivo");
 
@@ -61,5 +56,5 @@
         imagemArquivo.innerText = inputImagem.name;
       });
     </script>
-  </body>
-
+</body>
+{% endblock %}
