@@ -1,4 +1,4 @@
-from fakePinterest import app
+from FakePinterest import app
 
 if __name__ == "__main__":
     app.run(debug=False)

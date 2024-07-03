@@ -2,7 +2,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, FileField
 from wtforms.validators import DataRequired, Email, EqualTo, Length, ValidationError
-from fakePinterest.models import Usuario
+from FakePinterest.models import Usuario
 
 
 class formLogin(FlaskForm):

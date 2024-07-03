@@ -1,9 +1,9 @@
 # criar as rotas do nosso site (os link)
 from flask import render_template, url_for, redirect
-from fakePinterest import app, database, bcrypt
+from FakePinterest import app, database, bcrypt
 from flask_login import login_required, login_user, logout_user, current_user
-from fakePinterest.forms import formLogin, formCriarConta, FormFotos
-from fakePinterest.models import Usuario, Foto
+from FakePinterest.forms import formLogin, formCriarConta, FormFotos
+from FakePinterest.models import Usuario, Foto
 import os
 from werkzeug.utils import secure_filename
 
