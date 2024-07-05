@@ -1,5 +1,5 @@
 # criar a estrutura do banco de dados
-from FakePinterest import database, login_manager
+from fakePinterest import database, login_manager
 from datetime import datetime
 from flask_login import UserMixin
 

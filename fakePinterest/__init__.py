@@ -14,4 +14,4 @@ bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 login_manager.login_view = 'homepage'
 
-from FakePinterest import routs
+from fakePinterest import routs
